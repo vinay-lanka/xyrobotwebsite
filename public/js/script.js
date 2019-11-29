@@ -10,7 +10,7 @@ app.controller('pointsCtrl', function($scope, $http) {
         var range = [];
         var x=0,y=0;
         for(var i=1;i<=response.data;i++) {
-          range.push({i,x,y});
+          range.push({x,y});
         }
         $scope.range = range;
         console.log(response.data);
@@ -30,8 +30,9 @@ app.controller('pointsCtrl', function($scope, $http) {
     $http.post("/submit", $scope.range)
     .then(function(response) {
       console.log(response);
+      alert(response.data);
+        $scope.showCoordinateCardVar = false;
+        $scope.showPointsCardVar = true;
     });
-    // $scope.showCoordinateCardVar = false;
-    // $scope.showPointsCardVar = true;
   }
 });
